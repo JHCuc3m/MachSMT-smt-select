@@ -32,8 +32,8 @@ class SExprTokenizer:
             if not char:
                 break
 
-            # Handle string literals
-            if (char == '"' or cur_string_literal) and not cur_comment:
+            # Handle string literals (but not inside piped symbols)
+            if (char == '"' or cur_string_literal) and not cur_comment and not cur_quoted_symbol:
                 cur_string_literal.append(char)
                 # TODO: Escaped quotes "A "" B "" C" is one string literal
                 if char == '"' and len(cur_string_literal) > 1:
