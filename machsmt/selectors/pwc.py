@@ -42,7 +42,7 @@ class PWC(Selector):
                     else: tallies[solver2] += 1
             pred_dict = {solver:tally for solver, tally in tallies.items()}
             ret.append(
-                min(pred_dict, key=pred_dict.get)
+                max(pred_dict, key=pred_dict.get)
             )
             ret_pred.append(
                 self.score_softmin(pred_dict)
